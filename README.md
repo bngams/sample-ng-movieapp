@@ -1,3 +1,14 @@
+
+# Mise en place d'une application angular
+
+## Création
+* installation globale de Angular Cli via npm (npm install -g @angular/cli)
+* création du projet via angular cli (ng new <nom_projet>)
+* librairie de composants (angular material, MaterialModule)
+* developpement (creation de composants, classes, routing, services, modules)
+
+
+
 # NgMovieApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
