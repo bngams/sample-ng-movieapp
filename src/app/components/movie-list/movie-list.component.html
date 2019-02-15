@@ -1,4 +1,4 @@
 <div class="movies-container">
-  <app-movie-card *ngFor="let movie of myMovieList" [movie]="movie">
+  <app-movie-card *ngFor="let movie of dynamicMovieList$ | async" [movie]="movie">
   </app-movie-card>
 </div>

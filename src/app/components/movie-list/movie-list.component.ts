@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/movie';
+import { MovieService } from 'src/app/services/movie.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movie-list',
@@ -28,10 +30,33 @@ export class MovieListComponent implements OnInit {
       imgUrl: 'http://via.placeholder.com/320'
     },
   ];
+  dynamicMovieList: Movie[];
+  // $ => contain an Observable
+  dynamicMovieList$: Observable<Movie[]>;
 
-  constructor() { }
+  // Dependency Injection
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
+    this.findMoviesWithSubscribe();
+    this.findMovies();
+  }
+
+  /**
+   * dynamic async varibale
+   */
+  findMovies() {
+    this.dynamicMovieList$ = this.movieService.findAll();
+  }
+
+  /**
+   * Classic syntax with subscribe
+   */
+  findMoviesWithSubscribe() {
+    this.movieService.findAll().subscribe((response) => {
+      // code
+      this.dynamicMovieList = response;
+    });
   }
 
 }
